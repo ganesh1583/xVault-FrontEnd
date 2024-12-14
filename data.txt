@@ -1,0 +1,41 @@
+wbtc:-
+deposit mein agar user ka balance dekhna hai to 
+let 
+  balanceRes = await client.queryContractSmart(wBTC, balanceMsg);
+  console.log(balanceRes);
+  
+let allowenceMsg = {
+    increase_allowance: {
+      spender: vault,
+      amount: "10000000000",
+    },
+  };
+
+  let allowenceRes = await client.execute(
+    account.address,
+    wBTCtoken,
+    allowenceMsg,
+    "auto"
+  );
+
+  let depositMsg = {
+    deposit: {
+      amount: UserInput
+    },
+  };
+
+  let depositRes = await client.execute(
+    account.address,
+    wBTCvault,
+    depositMsg,
+    "auto"
+  );
+
+    let user_balance = {
+    get_balance_of: {
+      address: account.address,
+    },
+  };
+
+  balanceRes = await client.queryContractSmart(wBTCvault, user_balance);
+  console.log(balanceRes);
